@@ -48,7 +48,15 @@ Customize the output design based on my requirements was another challenge. I tr
 
 ## Screenshots
 
-![Project Logo](https://github.com/your-username/your-repo/raw/main/images/logo.png)
+![Register API Key](https://github.com/arunwosti/flasks-requests-api-python/blob/master/sc-out1.JPG)
+
+![Live](https://github.com/arunwosti/flasks-requests-api-python/blob/master/sc-out1.JPG
+
+![Home Page](https://github.com/arunwosti/flasks-requests-api-python/blob/master/sc-out1.JPG)
+
+![Success Info](https://github.com/arunwosti/flasks-requests-api-python/blob/master/sc-out1.JPG)
+
+![Error](https://github.com/arunwosti/flasks-requests-api-python/blob/master/sc-out1.JPG)
 
 
 ---
