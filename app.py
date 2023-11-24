@@ -3,17 +3,18 @@ import requests
 
 app = Flask(__name__)
 
-NEWS_API_KEY = "fc2a6edc94fc44fdbfb7e1319643bfdf" 
+NEWS_API_KEY = "fc2a6edc94fc44fdbfb7e1319643bfdf"
 
 @app.route('/')
 def homepage():
     return render_template("index.html")
 
+@app.route("/newsletterinfo", methods=["POST"])
 def get_newsletter_info():
     newsletter_name = request.form.get("newsletter")
     api_key = request.form.get('apikey')
 
-    # Verifing that the API key matches expected API key
+    # Verifying that the API key matches expected API key
     if api_key != NEWS_API_KEY:
         return render_template("error.html", error_message="Invalid API Key")
 
@@ -27,14 +28,14 @@ def get_newsletter_info():
 
         if response.status_code == 200 and data.get('status') == 'ok':
             articles = data.get('articles', [])
-            # Taking only first data
+            # Taking only the first data
             if articles:
                 first_article = articles[0]
                 return render_template("newsletterinfo.html", newsletter_data=[first_article])
             else:
                 return render_template("error.html", error_message="No articles found.")
         else:
-            #  Error message 
+            # Error message
             if data.get('message'):
                 error_message = data.get('message')
                 return render_template("error.html", error_message=error_message)
