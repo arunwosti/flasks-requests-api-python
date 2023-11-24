@@ -48,13 +48,27 @@ Customize the output design based on my requirements was another challenge. I tr
 
 ## Screenshots
 
+Register API Key:
+
 ![Register API Key](https://github.com/arunwosti/flasks-requests-api-python/blob/master/sc-out1.JPG)
+
+
+Deployed and Live:
 
 ![Live](https://github.com/arunwosti/flasks-requests-api-python/blob/master/sc1-live.JPG)
 
+
+Main Page:
+
 ![Home Page](https://github.com/arunwosti/flasks-requests-api-python/blob/master/sc-out1.JPG)
 
+
+Success Page with News Information:
+
 ![Success Info](https://github.com/arunwosti/flasks-requests-api-python/blob/master/sc-out2.JPG)
+
+
+Error (Invalid Key provided in this case)
 
 ![Error](https://github.com/arunwosti/flasks-requests-api-python/blob/master/sc-out3.JPG)
 
