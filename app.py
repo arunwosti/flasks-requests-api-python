@@ -14,15 +14,25 @@ def get_newsletter_info():
 
     url = f"http://example.com/newsletter/api/info?name={newsletter_name}&apikey={newsletter_api_key}"
 
-    response = requests.get(url)
-    data = response.json()
+    try:
+        response = requests.get(url)
 
-    if response.status_code == 200 and data.get('status') == 'success':
-        return render_template("newsletter_info.html", newsletter_data=data)
-    else:
-        error_message = data.get('error', 'ERROR!!')
-        return render_template("error.html", error_message=error_message)
+        # Checking if the response contains JSON data
+        response.raise_for_status()
+        data = response.json()
 
+        if response.status_code == 200 and data.get('status') == 'success':
+            return render_template("newsletter_info.html", newsletter_data=data)
+        else:
+            error_message = data.get('error', 'ERROR!!')
+            return render_template("error.html", error_message=error_message)
+
+    except requests.exceptions.HTTPError as errh:
+        # Handling HTTP errors (e.g., 404, 500, etc.)
+        return render_template("error.html", error_message=f"HTTP Error: {errh}")
+    except requests.exceptions.RequestException as err:
+        # Handling other request exceptions
+        return render_template("error.html", error_message=f"Request Error: {err}")
 
 if __name__ == '__main__':
     app.run(host="0.0.0.0", port=5500)
