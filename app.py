@@ -9,10 +9,11 @@ def homepage():
 
 @app.route("/newsletterinfo", methods=["POST"])
 def get_newsletter_info():
-    newsletter_name = request.form.get("newsletter")
+    newsletter_title = request.form.get("newsletter")
     newsletter_api_key = request.form.get('apikey')
 
-    url = f"http://example.com/newsletter/api/info?name={newsletter_name}&apikey={newsletter_api_key}"
+
+    url = f"https://newsapi.org/v2/everything?q={newsletter_title}&from=2023-10-24&sortBy=publishedAt&apiKey={newsletter_api_key}"
 
     try:
         response = requests.get(url)
