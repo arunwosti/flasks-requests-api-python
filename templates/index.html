@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>Newsletter Information</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+</head>
+
+<body>
+    <div class="container mt-5">
+        <h1 class="text-center">Newsletter Information</h1>
+        <div class="row justify-content-center">
+            <div class="col-md-6">
+                <form action="/newsletterinfo" method="POST">
+                    <div class="form-group">
+                        <label for="newsletter">Enter Newsletter Name:</label>
+                        <input type="text" class="form-control" name="newsletter" id="newsletter" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="apikey">Enter your API Key:</label>
+                        <input type="text" class="form-control" name="apikey" id="apikey" required>
+                    </div>
+                    <div class="form-group">
+                        <input type="submit" class="btn btn-primary" value="Search">
+                    </div>
+                </form>
+            </div>
+        </div>
+
+        <!-- Display Newsletter Information -->
+        {% if newsletter_data %}
+        <div class="row justify-content-center mt-5">
+            <div class="col-md-6">
+                <h2 class="text-center">Newsletter Information</h2>
+                <ul class="list-group">
+                    {% for key, value in newsletter_data.items() %}
+                    <li class="list-group-item"><strong>{{ key }}:</strong> {{ value }}</li>
+                    {% endfor %}
+                </ul>
+            </div>
+        </div>
+        {% endif %}
+
+        <!-- Display Error Message -->
+        {% if error_message %}
+        <div class="row justify-content-center mt-5">
+            <div class="col-md-6">
+                <div class="alert alert-danger" role="alert">
+                    {{ error_message }}
+                </div>
+            </div>
+        </div>
+        {% endif %}
+    </div>
+</body>
+
+</html>

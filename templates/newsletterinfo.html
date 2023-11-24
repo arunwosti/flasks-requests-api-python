@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>Newsletter Information</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+</head>
+
+<body>
+    <div class="container mt-5">
+        <h2 class="text-center">Newsletter Information</h2>
+        <div class="row justify-content-center">
+            <div class="col-md-6">
+                {% if newsletter_data %}
+                    <ul class="list-group">
+                        <li class="list-group-item"><strong>Title:</strong> {{ newsletter_data.title }}</li>
+                        <li class="list-group-item"><strong>Description:</strong> {{ newsletter_data.description }}</li>
+                        <li class="list-group-item"><strong>Published Date:</strong> {{ newsletter_data.published_date }}</li>
+                    </ul>
+                {% else %}
+                    <div class="alert alert-danger" role="alert">
+                        An error occurred while fetching newsletter information.
+                    </div>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>
