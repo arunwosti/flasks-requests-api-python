@@ -23,5 +23,6 @@ def get_newsletter_info():
         error_message = data.get('error', 'ERROR!!')
         return render_template("error.html", error_message=error_message)
 
+
 if __name__ == '__main__':
     app.run(host="0.0.0.0", port=5500)
