@@ -13,9 +13,13 @@
             <div class="col-md-6">
                 {% if newsletter_data %}
                     <ul class="list-group">
-                        <li class="list-group-item"><strong>Title:</strong> {{ newsletter_data.title }}</li>
-                        <li class="list-group-item"><strong>Description:</strong> {{ newsletter_data.description }}</li>
-                        <li class="list-group-item"><strong>Published Date:</strong> {{ newsletter_data.published_date }}</li>
+                        {% for article in newsletter_data %}
+                            <li class="list-group-item">
+                                <strong>Title:</strong> {{ article.title }}<br>
+                                <strong>Description:</strong> {{ article.description }}<br>
+                                <strong>Published Date:</strong> {{ article.publishedAt }}
+                            </li>
+                        {% endfor %}
                     </ul>
                 {% else %}
                     <div class="alert alert-danger" role="alert">
