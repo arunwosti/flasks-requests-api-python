@@ -42,10 +42,8 @@ def get_newsletter_info():
                 return render_template("error.html", error_message="An unexpected error occurred.")
 
     except requests.exceptions.HTTPError as errh:
-        print("HTTP Error:", errh)  # For debugging
         return render_template("error.html", error_message=f"HTTP Error: {errh}")
     except requests.exceptions.RequestException as err:
-        print("Request Error:", err)  # For debugging
         return render_template("error.html", error_message=f"Request Error: {err}")
 
 if __name__ == '__main__':
