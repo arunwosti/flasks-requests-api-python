@@ -3,36 +3,39 @@ import requests
 
 app = Flask(__name__)
 
+NEWS_API_KEY = "82e3e00988e248129fdd4ff5fce3e220" 
+
 @app.route('/')
 def homepage():
     return render_template("index.html")
 
 @app.route("/newsletterinfo", methods=["POST"])
 def get_newsletter_info():
-    newsletter_title = request.form.get("newsletter")
-    newsletter_api_key = request.form.get('apikey')
+    newsletter_name = request.form.get("newsletter")
+    api_key = request.form.get('apikey')
 
+    # Verify that the API key matches your expected API key
+    if api_key != NEWS_API_KEY:
+        return render_template("error.html", error_message="Invalid API Key")
 
-    url = f"https://newsapi.org/v2/everything?q={newsletter_title}&from=2023-10-24&sortBy=publishedAt&apiKey={newsletter_api_key}"
+    # Make a request to the News API
+    url = f"https://newsapi.org/v2/everything?q={newsletter_name}&apiKey={NEWS_API_KEY}"
 
     try:
         response = requests.get(url)
-
-        # Checking if the response contains JSON data
         response.raise_for_status()
         data = response.json()
 
-        if response.status_code == 200 and data.get('status') == 'success':
-            return render_template("newsletter_info.html", newsletter_data=data)
+        if response.status_code == 200 and data.get('status') == 'ok':
+            articles = data.get('articles', [])
+            return render_template("newsletterinfo.html", newsletter_data=articles)
         else:
-            error_message = data.get('error', 'ERROR!!')
+            error_message = data.get('message', 'ERROR!!')
             return render_template("error.html", error_message=error_message)
 
     except requests.exceptions.HTTPError as errh:
-        # Handling HTTP errors (e.g., 404, 500, etc.)
         return render_template("error.html", error_message=f"HTTP Error: {errh}")
     except requests.exceptions.RequestException as err:
-        # Handling other request exceptions
         return render_template("error.html", error_message=f"Request Error: {err}")
 
 if __name__ == '__main__':
