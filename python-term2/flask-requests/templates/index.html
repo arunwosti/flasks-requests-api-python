@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>IMDb Movie Search</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+</head>
+
+<body>
+    <div class="container mt-5">
+        <h1 class="text-center">IMDb Movie Search</h1>
+        <div class="row justify-content-center">
+            <div class="col-md-6">
+                <form action="/movieinfo" method="POST">
+                    <div class="form-group">
+                        <label for="movie">Enter Movie Name:</label>
+                        <input type="text" class="form-control" name="movie" id="movie" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="appid">Enter your IMDb API Key:</label>
+                        <input type="text" class="form-control" name="appid" id="appid" required>
+                    </div>
+                    <div class="form-group">
+                        <input type="submit" class="btn btn-primary" value="Search">
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>
