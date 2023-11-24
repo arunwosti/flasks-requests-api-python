@@ -6,6 +6,9 @@ This Python program utilizes Flask and Requests to demonstrate a simple example 
 
 Before running the program, we need to obtain an API key for the required service. 
 
+For Testing:
+API KEY => fc2a6edc94fc44fdbfb7e1319643bfdf
+
 ## Getting Started
 
 To run this project, follow the steps below:
